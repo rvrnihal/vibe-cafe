@@ -51,3 +51,29 @@ A modern, user-friendly mobile application for browsing, selecting, and ordering
 ---
 
 ## Installation & Running
+git clone [https://github.com/rvrnihal/vibe-cafe-app.git](https://github.com/rvrnihal/vibe-cafe)
+cd vibe-cafe-app
+flutter pub get
+flutter run
+
+
+> Requires **Flutter SDK** and relevant CLI tools for Android/iOS development.
+
+---
+
+## Challenges Faced
+- Adapting to Dart syntax and Flutter concepts
+- Debugging UI glitches and learning development tools
+
+---
+
+## Future Directions
+- Explore advanced Flutter features such as animations and custom widgets
+- Contribute to open-source Flutter repositories
+
+---
+
+## Contributors
+Internship project developed by rvrnihal.
+
+---
