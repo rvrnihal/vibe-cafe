@@ -9,7 +9,6 @@ import 'package:vibe_cafe/data/repositories/menu_repository_impl.dart';
 import 'package:vibe_cafe/presentation/controllers/cart_controller.dart';
 import 'package:vibe_cafe/presentation/controllers/menu_controller.dart';
 import 'package:vibe_cafe/presentation/controllers/auth_controller.dart';
-import 'package:vibe_cafe/presentation/pages/splash_page.dart';
 import 'package:vibe_cafe/config/app_routes.dart';
 
 void main() async {
@@ -58,9 +57,6 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.system,
-      
-      // Home page
-      home: const SplashPage(),
       
       // Routes configuration
       getPages: AppRoutes.getPages,

@@ -48,7 +48,9 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
 
   void _navigateToHome() {
     Future.delayed(const Duration(seconds: 3), () {
-      Get.offAllNamed(AppRoutes.home);
+      if (mounted) {
+        Navigator.of(context).pushReplacementNamed(AppRoutes.home);
+      }
     });
   }
 
