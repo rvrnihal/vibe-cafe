@@ -63,73 +63,96 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    
     return Scaffold(
-      backgroundColor: context.colorScheme.background,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // Logo with animation
-            ScaleTransition(
-              scale: _scaleAnimation,
-              child: Container(
-                width: 120,
-                height: 120,
-                decoration: BoxDecoration(
-                  color: context.colorScheme.primary,
-                  borderRadius: BorderRadius.circular(30),
-                  boxShadow: [
-                    BoxShadow(
-                      color: context.colorScheme.primary.withOpacity(0.3),
-                      blurRadius: 20,
-                      offset: const Offset(0, 10),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: isDark 
+                ? [
+                    const Color(0xFF1E1C1A),
+                    const Color(0xFF121212),
+                  ]
+                : [
+                    const Color(0xFFFFFDFB),
+                    const Color(0xFFFFF9F5),
+                    const Color(0xFFF7ECE1),
+                  ],
+          ),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Logo with animation
+              ScaleTransition(
+                scale: _scaleAnimation,
+                child: Container(
+                  width: 130,
+                  height: 130,
+                  decoration: BoxDecoration(
+                    color: context.colorScheme.primary,
+                    borderRadius: BorderRadius.circular(36),
+                    boxShadow: [
+                      BoxShadow(
+                        color: context.colorScheme.primary.withOpacity(0.25),
+                        blurRadius: 30,
+                        offset: const Offset(0, 15),
+                      ),
+                    ],
+                  ),
+                  child: const Center(
+                    child: Text(
+                      '☕',
+                      style: TextStyle(
+                        fontSize: 64,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 48),
+              // App name with fade animation
+              FadeTransition(
+                opacity: _fadeAnimation,
+                child: Column(
+                  children: [
+                    Text(
+                      'VIBE CAFE',
+                      style: context.textTheme.displayMedium?.copyWith(
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: 4,
+                        color: context.colorScheme.primaryContainer,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    Text(
+                      'Taste the Vibe',
+                      style: context.textTheme.titleMedium?.copyWith(
+                        color: context.colorScheme.secondary,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 1.5,
+                      ),
                     ),
                   ],
                 ),
-                child: Center(
-                  child: Text(
-                    '🍜',
-                    style: context.textTheme.displayLarge,
+              ),
+              const SizedBox(height: 80),
+              // Loading indicator
+              FadeTransition(
+                opacity: _fadeAnimation,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    context.colorScheme.primary,
                   ),
+                  strokeWidth: 2.5,
                 ),
               ),
-            ),
-            const SizedBox(height: 40),
-            // App name with fade animation
-            FadeTransition(
-              opacity: _fadeAnimation,
-              child: Column(
-                children: [
-                  Text(
-                    'VIBE CAFE',
-                    style: context.textTheme.displayMedium?.copyWith(
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: 2,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    'Taste the Vibe',
-                    style: context.textTheme.bodyLarge?.copyWith(
-                      color: context.colorScheme.primary,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 60),
-            // Loading indicator
-            FadeTransition(
-              opacity: _fadeAnimation,
-              child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(
-                  context.colorScheme.primary,
-                ),
-                strokeWidth: 3,
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

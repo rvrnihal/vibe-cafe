@@ -26,18 +26,23 @@ class CategoryChips extends StatelessWidget {
           children: categories.map((category) {
             final isSelected = selectedCategory.value == category;
             return Padding(
-              padding: const EdgeInsets.only(right: 8),
-              child: FilterChip(
+              padding: const EdgeInsets.only(right: 10),
+              child: ChoiceChip(
                 selected: isSelected,
                 onSelected: (_) => onCategorySelected(category),
                 label: Text(category),
-                backgroundColor: Colors.grey[200],
-                selectedColor: Theme.of(context).colorScheme.primary,
-                labelStyle: TextStyle(
-                  color: isSelected
-                      ? Colors.white
-                      : Theme.of(context).colorScheme.primary,
-                  fontWeight: FontWeight.w500,
+                elevation: isSelected ? 3 : 0,
+                shadowColor: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+                showCheckmark: false,
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  side: BorderSide(
+                    color: isSelected 
+                        ? Colors.transparent 
+                        : Theme.of(context).colorScheme.outline,
+                    width: 1,
+                  ),
                 ),
               ),
             );
